@@ -1,0 +1,18 @@
+From: VLC Developer <vlc@videolan.org>
+Subject: Fix Java version detection for JDK 11+
+
+JDK 11+ no longer supports source/target 1.6. Bump to 1.8.
+
+--- a/src/libbluray/bdj/meson.build
++++ b/src/libbluray/bdj/meson.build
+@@ -32,8 +32,8 @@
+     java_args = [
+         '-d', join_paths(meson.current_build_dir(), 'build'),
+         '-sourcepath', meson.current_source_dir(),
+-        '-source', '1.6',
+-        '-target', '1.6',
++        '-source', '1.8',
++        '-target', '1.8',
+         '-encoding', 'UTF-8',
+         '-bootclasspath', join_paths(bootclasspath),
+         '-classpath', join_paths(classpath),
