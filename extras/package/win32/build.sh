@@ -625,6 +625,9 @@ else
     fi
 
     info "Configuring VLC"
+    if [ ! -x "${SCRIPT_PATH}/configure.sh" ]; then
+        chmod +x "${SCRIPT_PATH}/configure.sh"
+    fi
     ${SCRIPT_PATH}/configure.sh --host=$TRIPLET --with-contrib=../contrib/$CONTRIB_PREFIX "$WIXPATH" $CONFIGFLAGS
 
     info "Compiling"
