@@ -73,6 +73,10 @@ endif
 	$(CMAKECLEAN)
 	$(HOSTVARS_CMAKE) $(CMAKE) $(AOM_CONF)
 	+$(CMAKEBUILD)
+ifdef HAVE_WIN32
+	sed -i -e 's/ -lm / -lm -lpthread /g' $(BUILD_DIRUNPACK)/aom.pc
+	grep -q " -lpthread" $(BUILD_DIRUNPACK)/aom.pc || sed -i -e 's/ -lm/ -lm -lpthread/' $(BUILD_DIRUNPACK)/aom.pc
+endif
 	$(call pkg_static,"$(BUILD_DIRUNPACK)/aom.pc")
 	$(CMAKEINSTALL)
 	touch $@
