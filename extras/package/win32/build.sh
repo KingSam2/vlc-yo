@@ -590,6 +590,9 @@ if [ -n "$BUILD_MESON" ]; then
     meson compile -j $JOBS
 else
     info "Bootstrapping"
+    if [ ! -x "${VLC_ROOT_PATH}/bootstrap" ]; then
+        chmod +x "${VLC_ROOT_PATH}/bootstrap"
+    fi
     ${VLC_ROOT_PATH}/bootstrap
 
     mkdir -p $SHORTARCH

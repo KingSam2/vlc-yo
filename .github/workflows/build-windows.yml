@@ -32,6 +32,7 @@ jobs:
     - name: Build Windows Executable
       working-directory: build
       run: |
+        chmod +x ../bootstrap
         bash ../extras/package/win32/build.sh -a x86_64 -i u
 
     - name: Find Executable
