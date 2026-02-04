@@ -625,6 +625,9 @@ else
     fi
 
     info "Configuring VLC"
+    if [ ! -x "${VLC_ROOT_PATH}/make-alias" ]; then
+        chmod +x "${VLC_ROOT_PATH}/make-alias"
+    fi
     if [ ! -x "${SCRIPT_PATH}/configure.sh" ]; then
         chmod +x "${SCRIPT_PATH}/configure.sh"
     fi
